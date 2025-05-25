@@ -1,9 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import mongooseAutopopulate from 'mongoose-autopopulate';
+import { BlogsModule } from "@qa-env/blogs";
 
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forRoot("mongodb://localhost:27017/blog", {
+      connectionFactory: (connection) => {
+        connection.plugin(mongooseAutopopulate);
+        return connection;
+      },
+    }),
+    BlogsModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
