@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  core:
+    build:
+      context: .
+      dockerfile: apps/core/Dockerfile
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - 4010:4010
+  blog:
+    build:
+      context: .
+      dockerfile: apps/blog/Dockerfile
+    depends_on:
+      - core
+    ports:
+      - 80:3000
