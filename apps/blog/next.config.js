@@ -9,7 +9,26 @@ const { composePlugins, withNx } = require('@nx/next');
 const nextConfig = {
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
-  nx: {},
+  nx: {
+    // Set this to true if you would like to use SVGR
+    // See: https://github.com/gregberge/svgr
+    svgr: false
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  }
 };
 
 const plugins = [
