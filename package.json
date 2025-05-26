@@ -10,7 +10,8 @@
     "test:ci": "nx run-many --target=test --all --parallel --skip-nx-cache",
     "e2e": "nx run-many --target=e2e --all",
     "core": "nx run core:serve:development",
-    "blog": "nx run-many --parallel --target=serve --projects=blog,core"
+    "blog": "nx run blog:serve:development",
+    "start-blog": "nx run-many --parallel --target=serve --projects=blog,core --max-parallel=2"
   },
   "private": true,
   "dependencies": {
