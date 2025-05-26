@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy root files required for installing deps
-COPY package*.json nx.json tsconfig.base.json ./
+COPY package*.json nx.json tsconfig.base.json eslint.config.mjs ./
 COPY libs ./libs
 COPY apps/core ./apps/core
 

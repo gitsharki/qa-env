@@ -15,5 +15,6 @@ RUN npm ci
 RUN npx nx build blog
 
 # Expose and run
-EXPOSE 3000
-CMD ["npx", "nx", "serve", "blog"]
+EXPOSE 3001
+#CMD ["npx", "nx", "serve", "blog"]
+CMD ["npx", "next", "start", "dist/apps/blog"]

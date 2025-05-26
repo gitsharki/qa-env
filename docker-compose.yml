@@ -16,6 +16,10 @@ services:
       - redis
     ports:
       - 4010:4010
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/blog
+      - REDIS_URI=redis://redis:6379
+      - PORT=4010
   blog:
     build:
       context: .
@@ -23,4 +27,7 @@ services:
     depends_on:
       - core
     ports:
-      - 88:3000
+      - 3001:3001
+    environment:
+      - API_URL=http://core:4010/api
+      - PORT=3001

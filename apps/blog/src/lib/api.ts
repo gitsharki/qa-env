@@ -1,7 +1,7 @@
 import type { Blog } from "./types"
 
 // Update the default API URL to match typical NestJS port
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4010/api"
+const API_URL = process.env.API_URL || "http://localhost:4010/api"
 
 export async function fetchBlogs(query = {}): Promise<Blog[]> {
   try {

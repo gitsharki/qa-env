@@ -7,7 +7,7 @@ import { BlogsModule } from "@qa-env/blogs";
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:27017/blog", {
+    MongooseModule.forRoot(process.env.MONGO_URI ||"mongodb://localhost:27017/blog", {
       connectionFactory: (connection) => {
         connection.plugin(mongooseAutopopulate);
         return connection;
